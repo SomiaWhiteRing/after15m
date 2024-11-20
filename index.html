@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来时间</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --icon-color: #ffd700;
+        }
+        
+        :root[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --icon-color: #ffffff;
+        }
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        #time {
+            font-size: 10vw;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        #time::after {
+            content: '点击切换毫秒显示';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        
+        #time:hover::after {
+            opacity: 0.7;
+        }
+        
+        #time.show-ms {
+            color: var(--text-color);
+        }
+        
+        #time.show-ms::after {
+            content: '点击隐藏毫秒';
+        }
+        
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        #theme-toggle svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--icon-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+    <button id="theme-toggle" aria-label="切换主题">
+        <svg class="sun-moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <!-- 太阳图标 -->
+            <path class="sun" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+            <!-- 月亮图标 -->
+            <path class="moon" d="M12 7a5 5 0 1 0 0 10a5 5 0 0 0 0 -10z m0 -4a9 9 0 1 1 0 18a9 9 0 0 1 0 -18z m0 2a7 7 0 1 0 0 14a7 7 0 0 0 0 -14z" />
+        </svg>
+    </button>
+    <script src="app.js"></script>
+</body>
+</html> 
